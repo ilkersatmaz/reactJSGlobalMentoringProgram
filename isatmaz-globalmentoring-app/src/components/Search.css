@@ -1,0 +1,21 @@
+.search-div{
+    background-image: url('../images/search-background.png');
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-btn{
+    padding: 18px 70px;
+    font-size: 20px;
+    background-color: #F65261;
+    margin-left: 10px;
+    color: white;
+    border-color: white;
+}
+
+.search-input{
+    padding: 18px 70px;
+    font-size: 20px;   
+}
