@@ -5,7 +5,7 @@ class App extends Component {
         return (
             <div>
                 <h1>
-                    My React App!
+                    My {process.env.NODE_ENV} React App!
                 </h1>
             </div>
         )
