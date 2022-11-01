@@ -1,0 +1,125 @@
+.upsert-form{
+    padding: 60px;
+    background-color: #232323;
+}
+.upsert-form-header{
+    font-size: 40px;
+    color:#FFFFFF;
+    margin: 0;
+    margin-bottom: 40px;
+}
+.upsert-form-div{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 50px;
+    row-gap: 30px;
+}
+
+.upsert-form-item-title{
+    font-size: 16px;
+    line-height: 20px;
+    color: #f65261;
+    margin-bottom: 10px;
+}
+
+.upsert-form-item-overview{
+    font-size: 16px;
+    line-height: 20px;
+    color: #f65261;
+    margin-bottom: 10px;
+    grid-column: 1 / 3;
+}
+
+.upsert-form-item-input{
+    width: 95%;
+    color: #FFFFFF;
+    background-color: #323232;
+    height: 50px;
+    padding-left: 15px;
+    margin-top: 10px;
+}
+
+.upsert-form-item-datepicker{
+    width: 95%;
+    color: #FFFFFF;
+    background-color: #323232;
+    padding-left: 15px;
+    margin-top: 10px;
+    height: 50px;
+}
+
+.upsert-form-item-multi-select{
+    width: 100%;
+    color: #FFFFFF;
+    background-color: #323232;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.upsert-form-item-multi-select .dropdown-container{
+    background: transparent;
+    border: none;
+}
+.upsert-form-item-multi-select .dropdown-container .dropdown-heading{
+    height: 50px;
+}
+.upsert-form-item-multi-select .dropdown-container .panel-content{
+    background-color: #323232; 
+}
+.upsert-form-item-multi-select .dropdown-container .panel-content li .selected{
+    background-color: #323232; 
+}
+.upsert-form-item-multi-select .dropdown-container .panel-content li input:checked {
+    accent-color: #f65261; 
+}
+.upsert-form-item-multi-select .dropdown-container .panel-content li:hover{
+    background-color: #323232; 
+}
+.upsert-form-item-textarea{
+    width: 96%;
+    color: #FFFFFF;
+    background-color: #323232;
+    height: 190px;
+    padding:15px 15px;
+    margin-top: 10px;
+}
+
+.upsert-from-button-div{
+    grid-column: 1 / 3;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.reset-button{
+    padding: 10px 20px;
+    border: 1px solid #f65261;
+    background-color: transparent;
+    color: #f65261;
+    margin-right: 15px;
+}
+
+.submit-button{
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    background-color: #f65261;
+    color: #FFFFFF;
+}
+
+.confirmation-popup-content{
+    width:50% !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 0;
+    border: none !important;
+    top: 100px !important;
+}
+
+.upsert-form-close{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    color: #FFFFFF;
+}
