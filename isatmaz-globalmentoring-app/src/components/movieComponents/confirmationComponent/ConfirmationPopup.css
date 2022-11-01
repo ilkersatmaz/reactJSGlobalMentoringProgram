@@ -1,0 +1,36 @@
+.confirmation-form{
+    padding: 60px;
+    background-color: #232323;
+}
+
+.confirmation-form-logo{
+    width: 50px;
+    height: 50px;
+}
+.confirmation-form-header{
+    font-size: 40px;
+    color:#FFFFFF;
+    margin: 0;
+}
+.confirmation-form-div{
+    display: flex;
+    flex-direction: column;
+    column-gap: 50px;
+    row-gap: 30px;
+    align-items: center;
+}
+
+.confirmation-text{
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.confirmation-form-close{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    color: #FFFFFF;
+}

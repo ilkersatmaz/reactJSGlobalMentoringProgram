@@ -1,0 +1,31 @@
+.delete-form{
+    padding: 60px;
+    background-color: #232323;
+}
+.delete-form-header{
+    font-size: 40px;
+    color:#FFFFFF;
+    margin: 0;
+    margin-bottom: 40px;
+}
+.delete-form-div{
+    display: grid;
+    grid-template-columns: auto;
+    column-gap: 50px;
+    row-gap: 30px;
+}
+
+.confirm-button{
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    background-color: #f65261;
+    color: #FFFFFF;    
+    justify-self: end;
+    width: 150px;
+    text-align: center;
+}
+
+.confirmation-text{
+    color: #FFFFFF;
+    font-size: 20px;
+}
