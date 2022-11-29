@@ -1,0 +1,101 @@
+.tabs{
+    padding: 5px 55px;
+}
+.movie-card-list-div{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap:55px;
+}
+
+.movie-list-title{
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.movie-card-div{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.movie-card-image{
+    width: 100%;
+    height: -webkit-fill-available;
+}
+.movie-card-title-div{
+    display: flex;
+    justify-content: space-between;
+}
+.movie-card-title{
+    color: #ffffff;
+    font-size: 22px;
+}
+.movie-card-releaseDate{
+    font-size: 14px;
+    color: #ffffff;
+    padding: 5px 10px;
+    border: 1px solid #979797;
+    height: fit-content;
+}
+.movie-card-genre-div{
+    display: flex;
+}
+.movie-card-genre{
+    color: #ffffff;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.movie-card-more-button{
+    background-color: #2A202D;
+    padding: 5px;
+    position: absolute;
+    right: 0;
+    margin: 5px;
+    border-radius: 50%;
+    border: none;
+}
+.movie-card-more-icon{
+    width: 36px;
+    height: 36px;
+    right: 0;
+}
+
+.more-option-div{
+    background-color: #232323 !important;
+    border: none !important;   
+    position: absolute;
+    right: 10px;
+    top: 55px;
+    width: 50%;
+}
+
+.more-option-div-hide{
+    display: none;
+}
+
+.more-option-div .hide{
+    display: none;
+}
+
+.more-option-text{
+    color: #FFFFFF;
+    font-size: 16px;
+    padding: 5px;
+    height: 10px;
+}
+.more-option-text:hover{
+    background-color: #F65261;
+}
+
+.movie-card-edit-button{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: 100%;
+    text-align: start;
+    height: min-content;
+}
+
+.movie-card-edit-button:hover{
+    background-color: #F65261;
+}
