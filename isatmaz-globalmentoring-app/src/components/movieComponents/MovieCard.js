@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './Movie.css'
 import Popup from 'reactjs-popup';
 import { BsThreeDotsVertical } from 'react-icons/bs';
@@ -7,7 +7,8 @@ import DeleteMovie from "./deleteMovieComponent/DeleteMovie";
 
 function MovieCard(props){
     const {movieData, onMovieClick} = props;
-
+    const [isMoreOpen, setIsMoreOpen]=useState(false);
+    const [isUpsertOpen, setIsUpsertOpen]=useState(false);
     function getYear(releaseDate){
         if(releaseDate){
             const date=new Date(releaseDate)
@@ -17,18 +18,18 @@ function MovieCard(props){
     }
     return (
         <div className="movie-card-div" onClick={()=>{onMovieClick(movieData)}}>
-            <Popup className="more-option-popup" trigger={<button className="movie-card-more-button"><BsThreeDotsVertical color="#FFFFFF" className="movie-card-more-icon"/></button>} position="bottom right" arrow={false}>
+            <button className="movie-card-more-button" onClick={()=>{setIsMoreOpen(!isMoreOpen)}}><BsThreeDotsVertical color="#FFFFFF" className="movie-card-more-icon"/></button>
+            <div className={isMoreOpen ? `more-option-div` : `more-option-div-hide`} >
                 <div>
-                    <Popup className="upsert-popup" trigger={<button className="movie-card-edit-button"> <p className="more-option-text">Edit</p> </button>} position="bottom left" arrow={false}>
-                        <UpsertMovie movieData={movieData} />
+                    <Popup className="upsert-popup" onOpen={()=>{setIsUpsertOpen(true); setIsMoreOpen(false)}} open={isUpsertOpen} trigger={<button className="movie-card-edit-button"> <p className="more-option-text">Edit</p> </button>} position="bottom left" arrow={false}>
+                        <UpsertMovie movieData={movieData} setIsUpsertOpen={setIsUpsertOpen} />
                     </Popup>   
                     <Popup className="upsert-popup" trigger={ <button className="movie-card-edit-button"> <p className="more-option-text">Delete</p></button>} position="bottom left" arrow={false}>
                         <DeleteMovie movieData={movieData} />
-                    </Popup>                  
-                   
+                    </Popup> 
                 </div>
-            </Popup>
-            
+            </div>
+
             <img className="movie-card-image" alt={movieData.title} src={movieData.imageUrl} />
             <div className="movie-card-title-div">
                 <p className="movie-card-title">{movieData.title}</p>                
@@ -38,11 +39,8 @@ function MovieCard(props){
                 {movieData.genre.map((genre, index)=> {
                     return <p key={genre} className="movie-card-genre">{genre}{ (index===movieData.genre.length-1 ? '' : ',')}</p>
                 })}
-            </div>
-           
-           
-        </div>
-        
+            </div>   
+        </div>        
     )
 }
 

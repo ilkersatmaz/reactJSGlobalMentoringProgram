@@ -1,42 +1,28 @@
 import React from 'react';
-
+import Popup from 'reactjs-popup';
 import './DeleteMovie.css';
+import ConfirmationPopup from '../confirmationComponent/ConfirmationPopup';
 
-class DeleteMovie extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: ''
-    };
+function DeleteMovie () {
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
+  const handleSubmit = (event) => {
     alert('movie was removed from the list: ' + this.state.value);
     event.preventDefault();
   }
+  return (
+    <form className='delete-form' onSubmit={()=>{handleSubmit()}}>
+      <p className='delete-form-header'> DELETE MOVIE</p>
+      <div className='delete-form-div'>
+        <p className='confirmation-text'>
+          Are you sure you want to delete this movie?
+        </p>
+        <Popup className="confirmation-popup" trigger={<button className='confirm-button'>CONFIRM</button>} position="bottom left" arrow={false}>
+            <ConfirmationPopup />
+        </Popup>                  
+      </div>        
 
-  render() {
-    const  {movieData} = this.props;
-    return (
-      <form className='delete-form' onSubmit={this.handleSubmit}>
-        <p className='delete-form-header'> DELETE MOVIE</p>
-        <div className='delete-form-div'>
-          <p className='confirmation-text'>
-            Are you sure you want to delete this movie?
-          </p>
-          <button className='confirm-button' type="confirm" value="CONFIRM">CONFIRM</button>         
-        </div>        
-       
-      </form>
-    );
-  }
+    </form>
+  );
 }
 
 export default DeleteMovie

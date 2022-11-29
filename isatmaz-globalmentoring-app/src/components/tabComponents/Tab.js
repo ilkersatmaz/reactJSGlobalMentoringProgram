@@ -1,37 +1,25 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import './Tab.css';
 
-class Tab extends Component {
-  static propTypes = {
-    activeTab: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
-  };
+function Tab (props) {
+  const {onClick, activeTab, label} = props;
 
-  onClick = () => {
-    const { label, onClick } = this.props;
+  const onClickItem = () => {
     onClick(label);
   };
 
-  render() {
-    const {
-      onClick,
-      props: { activeTab, label },
-    } = this;
+  let className = "tab-list-item";
 
-    let className = "tab-list-item";
+  if (activeTab === label) {
+    className += " tab-list-active";
+  }  
 
-    if (activeTab === label) {
-      className += " tab-list-active";
-    }
-
-    return (
-      <li className={className} onClick={onClick}>
-        {label}
-      </li>
-    );
+  return (
+    <li className={className} onClick={onClickItem}>
+      {label}
+    </li>
+  );
   }
-}
+
 
 export default Tab;

@@ -60,9 +60,21 @@
     right: 0;
 }
 
-.more-option-popup-content{   
-   background-color: #232323 !important;
-   border: none !important;   
+.more-option-div{
+    background-color: #232323 !important;
+    border: none !important;   
+    position: absolute;
+    right: 10px;
+    top: 55px;
+    width: 50%;
+}
+
+.more-option-div-hide{
+    display: none;
+}
+
+.more-option-div .hide{
+    display: none;
 }
 
 .more-option-text{

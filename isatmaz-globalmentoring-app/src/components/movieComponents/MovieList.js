@@ -1,15 +1,15 @@
 import React from "react";
 import MovieCard from "./MovieCard";
-import {movies} from "../../movieData";
+import useFetchMovie from "../useFetchMovie";
 
 function MovieList(props){   
     const {onMovieClick, genre} = props;
-    const filteredMovie = genre === "All" ? movies : movies.filter(movie => movie.genre.indexOf(genre) > -1);
+    const [movieList] = useFetchMovie(genre);
     return (
         <div className="movie-list-div">
-            <p className="movie-list-title"><b>{filteredMovie.length}</b> movies found</p>
+            <p className="movie-list-title"><b>{movieList?.length}</b> movies found</p>
             <div className="movie-card-list-div"> 
-                {filteredMovie.map((movie)=> {
+                {movieList?.map((movie)=> {
                     return <MovieCard key={movie.title} onMovieClick={onMovieClick} movieData={movie}/>
                 })}                        
             </div>
