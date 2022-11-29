@@ -5,12 +5,12 @@ import ConfirmationPopup from '../confirmationComponent/ConfirmationPopup';
 
 function DeleteMovie () {
 
-  const handleSubmit = (event) => {
-    alert('movie was removed from the list: ' + this.state.value);
+  const handleSubmit = (event: any) => {
+    alert('movie was removed from the list: ');
     event.preventDefault();
   }
   return (
-    <form className='delete-form' onSubmit={()=>{handleSubmit()}}>
+    <form className='delete-form' onSubmit={handleSubmit}>
       <p className='delete-form-header'> DELETE MOVIE</p>
       <div className='delete-form-div'>
         <p className='confirmation-text'>

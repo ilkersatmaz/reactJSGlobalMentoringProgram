@@ -1,7 +1,7 @@
 import React from "react";
 import './Tab.css';
 
-function Tab (props) {
+function Tab (props : any) {
   const {onClick, activeTab, label} = props;
 
   const onClickItem = () => {

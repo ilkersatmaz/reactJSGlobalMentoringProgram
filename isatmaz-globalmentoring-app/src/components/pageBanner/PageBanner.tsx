@@ -5,7 +5,7 @@ import UpsertMovie from "../movieComponents/upsertMovieComponent/UpsertMovie";
 
 import "./PageBanner.css";
 
-function PageBanner(props){
+function PageBanner(props : any){
     const {movieData}=props;
     const [isUpsertOpen, setIsUpsertOpen] = useState(false);
     return (

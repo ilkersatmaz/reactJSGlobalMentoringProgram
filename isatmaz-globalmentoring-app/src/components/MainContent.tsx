@@ -6,7 +6,7 @@ import MovieBanner from "./movieBanner/MovieBanner";
 
 function MainContent (){    
     const [selectedMovie, setSelectedMovie] = useState(undefined);
-    const onMovieClick = useCallback((movie) => {
+    const onMovieClick = useCallback((movie : any) => {
         setSelectedMovie(movie);
     },[]);
 

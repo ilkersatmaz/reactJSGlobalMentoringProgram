@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import './Movie.css'
 import Popup from 'reactjs-popup';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import UpsertMovie from "../movieComponents/upsertMovieComponent/UpsertMovie";
+import UpsertMovie from "./upsertMovieComponent/UpsertMovie";
 import DeleteMovie from "./deleteMovieComponent/DeleteMovie";
 
-function MovieCard(props){
+function MovieCard(props:any){
     const {movieData, onMovieClick} = props;
     const [isMoreOpen, setIsMoreOpen]=useState(false);
     const [isUpsertOpen, setIsUpsertOpen]=useState(false);
-    function getYear(releaseDate){
+    function getYear(releaseDate:string){
         if(releaseDate){
             const date=new Date(releaseDate)
             return date.getFullYear();
@@ -25,19 +25,19 @@ function MovieCard(props){
                         <UpsertMovie movieData={movieData} setIsUpsertOpen={setIsUpsertOpen} />
                     </Popup>   
                     <Popup className="upsert-popup" trigger={ <button className="movie-card-edit-button"> <p className="more-option-text">Delete</p></button>} position="bottom left" arrow={false}>
-                        <DeleteMovie movieData={movieData} />
+                        <DeleteMovie />
                     </Popup> 
                 </div>
             </div>
 
-            <img className="movie-card-image" alt={movieData.title} src={movieData.imageUrl} />
+            <img className="movie-card-image" alt={movieData.title} src={movieData.poster_path} />
             <div className="movie-card-title-div">
                 <p className="movie-card-title">{movieData.title}</p>                
-                <p className="movie-card-releaseDate">{getYear(movieData.releaseDate)}</p>                
+                <p className="movie-card-releaseDate">{getYear(movieData.release_date)}</p>                
             </div>            
             <div className="movie-card-genre-div">
-                {movieData.genre.map((genre, index)=> {
-                    return <p key={genre} className="movie-card-genre">{genre}{ (index===movieData.genre.length-1 ? '' : ',')}</p>
+                {movieData.genres.map((genre: string, index: number)=> {
+                    return <p key={genre} className="movie-card-genre">{genre}{ (index===movieData.genres.length-1 ? '' : ',')}</p>
                 })}
             </div>   
         </div>        

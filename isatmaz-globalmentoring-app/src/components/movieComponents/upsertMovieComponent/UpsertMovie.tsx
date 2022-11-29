@@ -17,20 +17,23 @@ const genreOptions = [
 ];
 
 const initialMovieData = {
-  "title":"",
-  "description":"",
-  "imageUrl":"",
-  "releaseDate": "",
-  "url":"",
-  "rating":"",
-  "genre": [],
-  "runTime": ""
+  "title": "",
+  "tagline": "",
+  "vote_average": 0,
+  "vote_count": 0,
+  "release_date": "",
+  "poster_path": "",
+  "overview": "",
+  "budget": 0,
+  "revenue": 0,
+  "runtime": "",
+  "genres": []
 }
 
-function UpsertMovie (props) {
+function UpsertMovie (props : any) {
   const {setIsUpsertOpen} = props;
   const [movieData, setMovieData] = useState(props.movieData ? props.movieData : initialMovieData);
-  const [selectedGenre, setSelectedGenre] = useState(props.movieData ? mapSelectedGenre(props.movieData.genre) : []);
+  const [selectedGenre, setSelectedGenre] = useState(props.movieData ? mapSelectedGenre(props.movieData.genres) : []);
   const [resetTriggered, setResetTriggered] = useState(false);
   useEffect(()=>{
     if(resetTriggered){
@@ -39,30 +42,30 @@ function UpsertMovie (props) {
     }
   }, [resetTriggered])
 
-  function mapSelectedGenre(selectedList){
-    let multiSelectList = [];
-    selectedList.map((genre)=>{
+  function mapSelectedGenre(selectedList: any){
+    let multiSelectList = [] as any;
+    selectedList.map((genre : string)=>{
       multiSelectList.push({label : genre, value: genre});
     })
     return multiSelectList;
   }
 
-  function getDate(releaseDate){
+  function getDate(releaseDate:  string){
     if(releaseDate){
         const date=new Date(releaseDate)
         return date;
     }
-    return "";
+    return null;
   }
 
- function handleChange(event) {
+ function handleChange(event : any) {
     setMovieData({                   
       ...movieData,    
       [event.target.name] : event.target.value       
     })
   }
 
- function handleSubmit(event) { 
+ function handleSubmit(event: any) { 
     event.preventDefault();
   } 
   return (
@@ -79,25 +82,25 @@ function UpsertMovie (props) {
         <label className='upsert-form-item-title'>
           RELEASE DATE
           <br />
-          <DatePicker placeholder="Select Date" className='upsert-form-item-datepicker' 
-          selected={getDate(movieData?.releaseDate)} 
-            onChange={(date) => {
+          <DatePicker placeholderText="Select Date" className='upsert-form-item-datepicker' 
+          selected={getDate(movieData?.release_date)} 
+            onChange={(date: any) => {
               setMovieData({                   
                 ...movieData,    
-                releaseDate: date       
+                release_date: date       
             })
             }}/>
         </label>
         <label className='upsert-form-item-title'>
           MOVIE URL
           <br />
-          <input name="url" placeholder='https://' className='upsert-form-item-input' value={movieData?.url} 
+          <input name="url" placeholder='https://' className='upsert-form-item-input' value={movieData?.poster_path} 
           onChange={handleChange}/>
         </label>
         <label className='upsert-form-item-title'>
           RATING
           <br />
-          <input name='rating' placeholder='7.8' className='upsert-form-item-input' value={movieData?.rating} 
+          <input name='rating' placeholder='7.8' className='upsert-form-item-input' value={movieData?.vote_average} 
           onChange={handleChange}/>
         </label>
         <label className='upsert-form-item-title'>
@@ -107,22 +110,22 @@ function UpsertMovie (props) {
             className='upsert-form-item-multi-select' 
             options={genreOptions}
             value={selectedGenre}              
-            label="Select Genre"
+            labelledBy="Select Genre"            
             disableSearch={true}
             hasSelectAll={false}
-            onChange={(event)=>{setSelectedGenre(event)}}
+            onChange={(event: any)=>{setSelectedGenre(event)}}
           />
         </label>
         <label className='upsert-form-item-title'>
           RUNTIME
           <br />
-          <input name="runTime" placeholder='minutes' className='upsert-form-item-input' value={movieData?.runTime}  
+          <input name="runTime" placeholder='minutes' className='upsert-form-item-input' value={movieData?.runtime}  
           onChange={handleChange}/>
         </label>
         <label className='upsert-form-item-overview'>
           OVERVIEW
           <br />
-          <textarea name="description" placeholder='Movie Description' className='upsert-form-item-textarea' value={movieData?.description}  
+          <textarea name="description" placeholder='Movie Description' className='upsert-form-item-textarea' value={movieData?.overview}  
           onChange={handleChange}/>
         </label>
         <div className='upsert-from-button-div'>

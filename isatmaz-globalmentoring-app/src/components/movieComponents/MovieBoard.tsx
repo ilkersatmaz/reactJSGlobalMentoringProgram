@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Tabs from '../tabComponents/Tabs';
 import MovieList from "./MovieList";
 
 const genreList = ["All","Action","Comedy","Horor","Drama"];
 
-function MovieBoard (props){
-    const {onMovieClick}=props;          
+
+function MovieBoard (props:any){
+    const {onMovieClick}=props;     
     return (
-        <div>
+        <div className="movie-board-container">
             <Tabs className="movie-board-tabs">
                     {genreList.map((genre)=>{
                     return (
-                        <div key={genre} label={genre.toUpperCase()}>
+                        <div key={genre} id={genre.toUpperCase()}>
                             <MovieList onMovieClick={onMovieClick} genre={genre}/>
                         </div>)
                     })}              
-            </Tabs>     
+            </Tabs>                      
         </div>        
     )
 }
