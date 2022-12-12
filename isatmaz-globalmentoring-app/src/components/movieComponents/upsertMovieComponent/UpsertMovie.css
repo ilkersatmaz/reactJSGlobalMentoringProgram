@@ -123,3 +123,7 @@
     margin: 10px;
     color: #FFFFFF;
 }
+
+.validation-error{
+    color: white;
+}

@@ -1,13 +1,16 @@
 import React from 'react';
-import Popup from 'reactjs-popup';
+import { useAppDispatch } from '../../../hooks';
+import { deleteSelectedMovie } from '../../../store/movies/movieOperationSlice';
 import './DeleteMovie.css';
-import ConfirmationPopup from '../confirmationComponent/ConfirmationPopup';
 
-function DeleteMovie () {
-
+function DeleteMovie (props:any) {
+  const {setIsConfirmationOpen, movieId} = props;
+  const dispatch = useAppDispatch();
+  
+  
   const handleSubmit = (event: any) => {
-    alert('movie was removed from the list: ');
-    event.preventDefault();
+    dispatch(deleteSelectedMovie(movieId));
+    setIsConfirmationOpen(false);
   }
   return (
     <form className='delete-form' onSubmit={handleSubmit}>
@@ -16,9 +19,7 @@ function DeleteMovie () {
         <p className='confirmation-text'>
           Are you sure you want to delete this movie?
         </p>
-        <Popup className="confirmation-popup" trigger={<button className='confirm-button'>CONFIRM</button>} position="bottom left" arrow={false}>
-            <ConfirmationPopup />
-        </Popup>                  
+        <button className='confirm-button'>CONFIRM</button>               
       </div>        
 
     </form>

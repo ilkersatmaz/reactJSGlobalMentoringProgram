@@ -4,15 +4,15 @@ import './ConfirmationPopup.css';
 import { BsCheckCircleFill } from 'react-icons/bs';
 import {AiOutlineClose} from 'react-icons/ai';
 
-function ConfirmationPopup (){
-
+function ConfirmationPopup (props: any){
+  const {setIsConfirmationOpen} = props;
   const handleSubmit = (event: any) => {
     event.preventDefault();
   }
   return (
     <form className='confirmation-form' onSubmit={handleSubmit}>        
       <div className='confirmation-form-div'>
-        <AiOutlineClose className='confirmation-form-close' onClick={()=>{}}/>
+        <AiOutlineClose className='confirmation-form-close' onClick={()=>{setIsConfirmationOpen(false)}}/>
         <BsCheckCircleFill fill='#F65261' stroke='#F65261' className='confirmation-form-logo'/>
         <p className='confirmation-form-header'> CONGRATULATIONS !</p>
         <p className='confirmation-text'>

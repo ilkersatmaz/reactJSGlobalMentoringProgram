@@ -20,7 +20,7 @@ function PageBanner(props : any){
                 <button className="search-btn">SEARCH</button>
             </div>  
             <Popup className="upsert-popup" onOpen={()=>{setIsUpsertOpen(true)}} open={isUpsertOpen} trigger={<button className="add-movie-btn"> + ADD MOVIE</button>} position="bottom left" arrow={false}>
-                <UpsertMovie movieData={movieData} setIsUpsertOpen={setIsUpsertOpen} />
+                <UpsertMovie mode={"add"} movieData={movieData} setIsUpsertOpen={setIsUpsertOpen} />
             </Popup>
 
         </div>        
