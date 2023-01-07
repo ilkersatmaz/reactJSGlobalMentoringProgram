@@ -6,7 +6,8 @@ import UpsertMovie from "../movieComponents/upsertMovieComponent/UpsertMovie";
 import "./PageBanner.css";
 
 function PageBanner(props : any){
-    const {movieData}=props;
+    const {movieData, onSearchMovieClick, searchText}=props;
+    const [currentSearchText, setCurrentSearchText]=useState(searchText);
     const [isUpsertOpen, setIsUpsertOpen] = useState(false);
     return (
         <div className="search-div">
@@ -16,8 +17,10 @@ function PageBanner(props : any){
                 className="search-input"
                     type="text"
                     placeholder="What do you want to watch?"
+                    value={currentSearchText}
+                    onChange={(e)=>{setCurrentSearchText(e.target.value)}}
                 />
-                <button className="search-btn">SEARCH</button>
+                <button className="search-btn" onClick={()=>{onSearchMovieClick(currentSearchText)}}>SEARCH</button>
             </div>  
             <Popup className="upsert-popup" onOpen={()=>{setIsUpsertOpen(true)}} open={isUpsertOpen} trigger={<button className="add-movie-btn"> + ADD MOVIE</button>} position="bottom left" arrow={false}>
                 <UpsertMovie mode={"add"} movieData={movieData} setIsUpsertOpen={setIsUpsertOpen} />

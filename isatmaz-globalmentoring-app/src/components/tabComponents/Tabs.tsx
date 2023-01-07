@@ -4,12 +4,11 @@ import './Tab.css';
 
 function Tabs (props : any) {
 
-  const {children} = props;
-  const [activeTab, SetActiveTab] = useState(children[0].props.id);  
+  const {children,selectedGenre, setSelectedGenre} = props;
 
   const onClickTabItem = useCallback((tab: string) => {
-    SetActiveTab(tab);
-  }, [activeTab]);
+    setSelectedGenre(tab);
+  }, [selectedGenre]);
 
   return (
     <div className="tabs">
@@ -18,7 +17,7 @@ function Tabs (props : any) {
           const { id } = child.props;
           return (
             <Tab
-              activeTab={activeTab}
+              activeTab={selectedGenre}
               key={id}
               label={id}
               onClick={onClickTabItem}
@@ -28,7 +27,7 @@ function Tabs (props : any) {
       </ol>
       <div className="tab-content">
         {children.map((child: any) => {
-          return child.props.id !== activeTab ? undefined : child.props.children;
+          return child.props.id !== selectedGenre ? undefined : child.props.children;
         })}
       </div>
     </div>
