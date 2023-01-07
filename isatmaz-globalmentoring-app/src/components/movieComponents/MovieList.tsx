@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Select from 'react-select'
 import MovieCard from "./MovieCard";
-import useToggle, { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchMovies, MovieType } from '../../store/movies/moviesSlice';
+import { useSearchParams } from "react-router-dom";
 
 const sortByOptions = [
     { value: 'release_date', label: 'Release Date'}, 
@@ -10,19 +11,37 @@ const sortByOptions = [
   ]
 
 function MovieList(props:any){   
-    const {onMovieClick, genre} = props;
+    const {onMovieClick,searchText, setSearchText, genre, setSelectedGenre} = props;
     const isLoading = useAppSelector((state) => state.movies.isLoading);
     const movies = useAppSelector((state) => state.movies.responseData?.data) as MovieType[];
-    const [sortBy, setSortBy] = useState("release_date");         
-    const [sortingMenu, setSortingMenu] = useToggle(false);
-    const dispatch = useAppDispatch();  
+    const [sortBy, setSortBy] = useState("release_date");
+    const dispatch = useAppDispatch();
+    const [searchParams,setSearchParams]=useSearchParams();
+    useEffect(()=>{
+        const currentParams = Object.fromEntries([...searchParams]);
+        if (!currentParams["genre"] || currentParams["genre"].toLowerCase() === 'all') {
+            dispatch(fetchMovies({search: currentParams["title"]?? "", sortBy: currentParams["sortBy"]}));
+        } else {
+            dispatch(fetchMovies({search: currentParams["title"]?? "", filter: currentParams["genre"], sortBy: currentParams["sortBy"] }));
+        }
+        if(sortBy !== currentParams["sortBy"]){
+            setSortBy(currentParams["sortBy"])
+        }
+        if(genre.toLowerCase()==="all" && currentParams["genre"]){
+            setSelectedGenre(currentParams["genre"].toLocaleUpperCase());
+        }          
+    },[dispatch,searchParams])  
     useEffect(() => {
-      if (!genre || genre.toLowerCase() === 'all') {
-          dispatch(fetchMovies({ sortBy: sortBy}));
-      } else {
-          dispatch(fetchMovies({ filter: genre, sortBy: sortBy }));
+      const currentParams = Object.fromEntries([...searchParams]);      
+      if(!(!genre || genre.toLowerCase() === 'all')){        
+        currentParams["genre"]=genre;
       }
-    }, [dispatch, genre, sortBy]);
+      else{
+        delete currentParams.genre;
+      }  
+      currentParams["sortBy"]=sortBy;
+      setSearchParams(currentParams);       
+    }, [genre, sortBy]);   
     return (
         <div className="movie-list-div">
             {isLoading ? (
