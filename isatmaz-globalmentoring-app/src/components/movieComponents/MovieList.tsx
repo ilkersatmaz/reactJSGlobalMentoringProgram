@@ -11,7 +11,7 @@ const sortByOptions = [
   ]
 
 function MovieList(props:any){   
-    const {onMovieClick,searchText, setSearchText, genre, setSelectedGenre} = props;
+    const {onMovieClick, genre, setSelectedGenre} = props;
     const isLoading = useAppSelector((state) => state.movies.isLoading);
     const movies = useAppSelector((state) => state.movies.responseData?.data) as MovieType[];
     const [sortBy, setSortBy] = useState("release_date");

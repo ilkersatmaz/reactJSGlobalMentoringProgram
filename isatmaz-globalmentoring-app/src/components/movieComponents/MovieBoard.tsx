@@ -14,7 +14,7 @@ function MovieBoard (props:any){
                     {genreList.map((genre)=>{
                     return (
                         <div key={genre} id={genre.toUpperCase()}>
-                            <MovieList onMovieClick={onMovieClick} genre={genre} setSelectedGenre={setSelectedGenre} searchText={searchText} setSearchText={setSearchText}/>
+                            <MovieList onMovieClick={onMovieClick} genre={genre} setSelectedGenre={setSelectedGenre}/>
                         </div>)
                     })}              
             </Tabs>                      
