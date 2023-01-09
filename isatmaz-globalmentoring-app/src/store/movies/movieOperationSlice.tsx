@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { MovieType } from './moviesSlice';
+import moviesSlice, { MovieType } from './moviesSlice';
 
 interface StateType {
     isLoading: boolean;
@@ -8,11 +8,12 @@ interface StateType {
     movieData: null | MovieType;
 }
 
-const initialState: StateType = {
+export const initialState: StateType = {
     isLoading: false,
     error: false,
     movieData: null,
 };
+
 
 export const fetchSelectedMovie = createAsyncThunk(
     'selectedMovie/fetchSelectedMovie',
@@ -50,7 +51,7 @@ export const deleteSelectedMovie = createAsyncThunk(
     },
 );
 
-const movieOperationSlice = createSlice({
+export const movieOperationSlice = createSlice({
     name: 'selectedMovie',
     initialState,
     reducers: {},

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component tests Search bar snapshot 1`] = `
+<div
+  data-testid="search-panel"
+>
+  <a
+    class="sc-hHTYSt hBClyJ"
+    href="/search"
+  >
+    <img
+      alt="logo-netflix-roulette"
+      src="undefinedassets/images/logo.svg"
+    />
+    <button
+      class="sc-gKPRtg sc-ipEyDJ crhnbk cjUwbM"
+    >
+      + add movie
+    </button>
+  </a>
+  <div
+    class="sc-jrcTuL iBFwKc"
+  >
+    <h1
+      class="sc-bcXHqe sc-pyfCe jwEIAo uqdrl"
+    >
+      Find your movie
+    </h1>
+    <div
+      class="sc-kDvujY kupgi"
+    >
+      <input
+        class="sc-dmctIk eolsIr"
+        data-testid="search-input"
+        id="search-input"
+        placeholder="What do you want to find"
+        value=""
+      />
+      <button
+        class="sc-gKPRtg sc-iBYQkv crhnbk caTMnA"
+        data-testid="search-button"
+        id="search-button"
+        type="submit"
+      >
+        Search
+      </button>
+    </div>
+  </div>
+</div>
+`;
